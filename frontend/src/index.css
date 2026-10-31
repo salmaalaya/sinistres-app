@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F7F4EC;
+  color: #16211B;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+}
+
+:focus-visible {
+  outline: 2px solid #3E8A4C;
+  outline-offset: 2px;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.particle-drift {
+  animation: drift 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Assistant IA : apparition des messages en fade + slide */
+@keyframes messageIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.message-in {
+  animation: messageIn 0.32s ease-out both;
+}
+
+/* Assistant IA : indicateur de frappe a 3 points */
+@keyframes typingDot {
+  0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
+  30% { opacity: 1; transform: scale(1); }
+}
+.typing-dot {
+  animation: typingDot 1.2s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+/* Assistant IA : LED de statut qui pulse (assistant pret / en ligne) */
+@keyframes ledPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px 1px currentColor; }
+  50% { opacity: 0.45; box-shadow: 0 0 2px 0 currentColor; }
+}
+.status-led {
+  animation: ledPulse 2.2s ease-in-out infinite;
+}
+
+/* Assistant IA : bloc SQL qui se deplie en douceur */
+.sql-collapse {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+}
+.sql-collapse.sql-collapse-open {
+  max-height: 400px;
+  opacity: 1;
+}
+
+.input {
+  width: 100%;
+  border-radius: 9px;
+  border: 1px solid rgba(20, 32, 26, 0.08);
+  background: #FCFBF7;
+  color: #16211B;
+  padding: 10px 12px;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+}
+.input:focus {
+  outline: none;
+  border-color: #3E8A4C;
+  box-shadow: 0 0 0 3px rgba(62, 138, 76, 0.14);
+  background: #fff;
+}
+.input::placeholder {
+  color: #8C9990;
+}
+.input option {
+  background: #FFFFFF;
+  color: #16211B;
+}
+
+/* Assistant IA : curseur clignotant pendant la revelation mot par mot */
+@keyframes revealCursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.reveal-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: #3E8A4C;
+  animation: revealCursorBlink 0.9s step-end infinite;
+}
+
+/* Cloture de dossier : fondu d'apparition de l'overlay de confirmation */
+@keyframes celebrationIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+.celebration-in {
+  animation: celebrationIn 0.28s ease-out both;
+}
