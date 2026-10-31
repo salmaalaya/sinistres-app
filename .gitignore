@@ -1,0 +1,68 @@
+# --- Secrets / configuration locale ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+
+# --- Donnees reelles (confidentielles BIAT) : ne jamais committer ---
+*.xlsx
+*.xls
+*.csv
+database/etat*.xlsx
+backend/generated_documents/
+backend/uploads/
+uploads/
+*.db
+*.sqlite3
+*.sql.gz
+dump*.sql
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# --- Node / frontend ---
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+
+# --- Logs ---
+*.log
+logs/
+
+# --- Docker / donnees MySQL ---
+mysql_data/
+docker-data/
+volumes/
+
+# --- Artefacts Java (ancienne tentative Spring Boot) ---
+target/
+_archive/
+.github/modernize/
+
+# --- OCR : donnees Tesseract (16 Mo, a telecharger) et images de test locales ---
+backend/tessdata/
+backend/test_ocr.png
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Notes de conception internes (prompts)
+PROMPT_MAITRE.md
+INTERACTIONS_DYNAMIQUES_ADDENDUM.md
