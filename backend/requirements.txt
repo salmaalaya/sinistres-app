@@ -1,0 +1,45 @@
+# --- Phase 0-3 : socle, donnees, auth, CRUD ---
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+sqlalchemy==2.0.35
+pymysql==1.1.1
+cryptography==43.0.1
+pydantic==2.9.2
+pydantic-settings==2.5.2
+python-jose[cryptography]==3.3.0
+passlib==1.7.4
+bcrypt==4.0.1
+python-multipart==0.0.9
+python-dotenv==1.0.1
+pandas==2.2.3
+openpyxl==3.1.5
+
+scikit-learn==1.5.2
+numpy==2.1.1
+xgboost==2.1.1
+pm4py==2.7.11
+statsmodels==0.14.4
+# scipy 1.18+ breaks statsmodels' default lbfgs optimizer (fmin_l_bfgs_b lost
+# its `disp` kwarg) -> ARIMA.fit() is called with method_kwargs={"method":
+# "nm", ...} to force Nelder-Mead instead, see app/services/previsions.py
+
+# --- Phase 10 : series temporelles ---
+# statsmodels==0.14.2
+# prophet==1.1.6
+
+openai==3.3.1
+
+# --- Phase 13 : scanner OCR (necessite le binaire Tesseract, voir README) ---
+pytesseract
+reportlab
+Pillow
+
+# --- Assistant IA : fournisseur LLM Gemini (voir app/services/llm_provider.py) ---
+# google-genai force pydantic>=2.11 : bump depuis 2.9.2, verifie retro-compatible.
+google-genai==2.20.0
+pydantic==2.13.4
+
+# --- Phase F : tests, CI, notifications (voir tests/ et app/services/notifications.py) ---
+pytest==8.3.3
+httpx==0.27.2
+apscheduler==3.11.3
